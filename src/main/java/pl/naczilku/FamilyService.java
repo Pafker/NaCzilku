@@ -2,6 +2,7 @@ package pl.naczilku;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
@@ -14,50 +15,63 @@ import pl.naczilku.model.Volunteer;
 public class FamilyService {
 
 	private List<Family> familyList = new LinkedList<Family>();
+	private Random rnd = new Random();
 
 	private List<Family> setUpData() {
+
+		int numOfFamilies = rnd.nextInt(10);
+		String[] nazwisko = { "Herman", "Prokop", "Bucek", "Zdyb", "Balon" };
+		for (int i = 1; i < numOfFamilies; i++) {
+
+			Family tmpFamily = sampleFamilyMaker(i, nazwisko[rnd.nextInt(5)]);
+			familyList.add(tmpFamily);
+
+		}
+		return familyList;
+	}
+
+	private Family sampleFamilyMaker(int id, String lastName) {
+		String[] nazwiska = { "Nowak", "Kowalski", "Kolorow7", "Kurczak", "Rej" };
+		String[] imiona = { "Patryk", "Kacper", "Paweł", "Marcin", "Sebastian" };
+
 		List<Donor> donorList = new LinkedList<Donor>();
-		Donor tmpDonor = new Donor(1, "Patryk", "Pawlos", true, 765567765);
+		Donor tmpDonor = new Donor(1, imiona[rnd.nextInt(5)],
+				nazwiska[rnd.nextInt(5)], true,
+				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor);
-		Donor tmpDonor2 = new Donor(2, "Amadeusz", "Rogowski", false, 668347892);
+		Donor tmpDonor2 = new Donor(1, imiona[rnd.nextInt(5)],
+				nazwiska[rnd.nextInt(5)], false,
+				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor2);
-		Donor tmpDonor3 = new Donor(3, "Kaper", "Bailando", false, 996872334);
+		Donor tmpDonor3 = new Donor(1, imiona[rnd.nextInt(5)],
+				nazwiska[rnd.nextInt(5)], false,
+				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor3);
-		Donor tmpDonor4 = new Donor(4, "Szymon", "Pyrek", false, 696755921);
+		Donor tmpDonor4 = new Donor(1, imiona[rnd.nextInt(5)],
+				nazwiska[rnd.nextInt(5)], false,
+				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor4);
-		
-		List<Task> taskList = null;
-		int[] familyStatus = {1, 0, 1};
-		String street = "Olsza";
-		Volunteer volunteer = new Volunteer("Mati", 564754842);
-		int numOfMembers = 5;
-		String region = "Krakow - Pradnik Czerwony";
+
+		List<Task> taskList = new LinkedList<Task>();
+		int[] familyStatus = { 1, 0, 1 };
+		String[] street = { "Olsza", "Strzelcow", "Czarnowiejska",
+				"Rumiankowa", "Mlynska" };
+		Volunteer volunteer = new Volunteer(imiona[rnd.nextInt(5)],
+				rnd.nextInt(28000000) + 60000000);
+		int numOfMembers = (rnd.nextInt(3) + 2);
+		String[] region = { "Krakow - Pradnik Czerwony", "Lublin - LSM",
+				"Warszawa - Mokotow", "Katowice - Centrum", "Poznan - Centrum" };
 		String description = "Super pozytywna rodzinka";
-		String woivoiship = "malopolskie";
+		String woivoiship = "polska";
 		boolean isFinished = false;
-		String lastName = "Nowak";
-		int id = 1;
 		Family family1 = new Family(id, lastName, numOfMembers, woivoiship,
-				region, street, volunteer, donorList, familyStatus, isFinished,
-				description, taskList);
+				region[rnd.nextInt(5)], street[rnd.nextInt(5)], volunteer,
+				donorList, familyStatus, isFinished, description, taskList);
 		family1.addTask(new Task("Jedzenie", "Maka", null, false, null, null));
 		family1.addTask(new Task("Jedzenie", "Chleb", null, false, null, null));
-		family1.addTask(new Task("Inne", "Pralka", null, false, null, null));
-		familyList.add(family1);
+		family1.addTask(new Task("Inne", "Zeszyty", null, false, null, null));
 
-		Family family2 = new Family();
-		family2.setId(2);
-		family2.addTask(new Task("Ubrania", "Spodnie", null, false, null, null));
-		family2.addTask(new Task("Inne", "TV", null, false, null, null));
-		familyList.add(family2);
-
-		Family family3 = new Family();
-		family3.setId(3);
-		family3.addTask(new Task("Ubrania", "Koszula", null, false, null, null));
-		family3.addTask(new Task("Jedzenie", "Makaron", null, false, null, null));
-		familyList.add(family3);
-
-		return familyList;
+		return family1;
 	}
 
 	public List<Family> getFamilyList() {
@@ -67,7 +81,7 @@ public class FamilyService {
 	}
 
 	public Family getFamily(int index) {
-		Family tmpFamily = familyList.get(index);
+		Family tmpFamily = familyList.get(index - 1);
 		return tmpFamily;
 	}
 
