@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Family {
 
-	private int id;
+	private Long id;
 
 	private String lastName;
 
@@ -38,7 +38,7 @@ public class Family {
 	public Family() {
 	}
 
-	public Family(int id, String lastName, int numOfMembers, String woivoiship,
+	public Family(Long id, String lastName, int numOfMembers, String woivoiship,
 			String region, String street, Volunteer volunteer,
 			List<Donor> donorList, int[] familyStatus, boolean isFinished,
 			String description, List<Task> taskList) {
@@ -56,11 +56,11 @@ public class Family {
 		this.taskList = taskList;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

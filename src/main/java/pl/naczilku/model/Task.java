@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 public class Task {
 
+	private Long id;
+
 	// ubrania, zywnosc, higiena i leki, inne
 	private String category;
 
@@ -28,6 +30,14 @@ public class Task {
 		this.isFinished = isFinished;
 		this.whoDonated = whoDonated;
 		this.donationTime = donationTime;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCategory() {

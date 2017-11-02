@@ -2,7 +2,7 @@ package pl.naczilku.model;
 
 public class Donor {
 
-	private int id;
+	private Long id;
 
 	private String firstName;
 
@@ -15,7 +15,7 @@ public class Donor {
 	public Donor() {
 	}
 
-	public Donor(int id, String firstName, String lastName, boolean isLeader,
+	public Donor(Long id, String firstName, String lastName, boolean isLeader,
 			int telephoneNumber) {
 		this.id = id;
 		this.firstName = firstName;
@@ -24,11 +24,11 @@ public class Donor {
 		this.telephoneNumber = telephoneNumber;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
