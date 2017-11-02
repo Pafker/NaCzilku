@@ -4,22 +4,41 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
 public class Family {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotBlank
 	private String lastName;
 
+	@NotBlank
 	private int numOfMembers;
 
+	@NotBlank
 	private String voivodeship;
 
+	@NotBlank
 	private String region;
 
+	@NotBlank
 	private String street;
 
+	@OneToOne
 	private Volunteer volunteer;
 
+	@OneToMany
 	private List<Donor> donorList;
 
 	// 0: isChild
@@ -27,21 +46,25 @@ public class Family {
 	// 2: isPensioner
 	// 0 for false, 1 for true
 	// Example family with student and pensioner: [0 1 1]
+	@NotBlank
 	private int[] familyStatus = new int[3];
 
+	@NotBlank
 	private boolean isFinished;
 
+	@NotBlank
 	private String description;
 
+	@OneToMany
 	private List<Task> taskList;
 
 	public Family() {
 	}
 
-	public Family(Long id, String lastName, int numOfMembers, String woivoiship,
-			String region, String street, Volunteer volunteer,
-			List<Donor> donorList, int[] familyStatus, boolean isFinished,
-			String description, List<Task> taskList) {
+	public Family(Long id, String lastName, int numOfMembers,
+			String woivoiship, String region, String street,
+			Volunteer volunteer, List<Donor> donorList, int[] familyStatus,
+			boolean isFinished, String description, List<Task> taskList) {
 		this.id = id;
 		this.lastName = lastName;
 		this.numOfMembers = numOfMembers;

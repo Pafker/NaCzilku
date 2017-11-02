@@ -1,14 +1,26 @@
 package pl.naczilku.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@Entity
 @JsonIgnoreProperties(value = { "id" })
 public class Volunteer {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotBlank
 	private String firstName;
 
+	@NotBlank
 	private int telNumber;
 
 	public Volunteer() {

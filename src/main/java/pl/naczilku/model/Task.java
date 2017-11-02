@@ -2,21 +2,38 @@ package pl.naczilku.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
 public class Task {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	// ubrania, zywnosc, higiena i leki, inne
+	@NotBlank
 	private String category;
 
+	@NotBlank
 	private String productName;
 
+	@NotBlank
 	private String comment;
 
+	@NotBlank
 	private boolean isFinished;
 
+	@OneToOne
 	private Donor whoDonated;
 
+	@NotBlank
 	private LocalDateTime donationTime;
 
 	public Task() {
