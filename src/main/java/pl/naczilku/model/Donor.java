@@ -21,7 +21,7 @@ public class Donor {
 	private String lastName;
 
 	@NotBlank
-	private boolean isLeader;
+	private boolean isLeader = false;
 
 	@NotBlank
 	private int telephoneNumber;
