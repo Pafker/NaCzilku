@@ -6,12 +6,15 @@ import pl.naczilku.model.Family;
 
 public class FamilyTest {
 
+	private Family rodzina;
+
 	@Test
 	public void testFamilyStatus() {
-		Family rodzina = new Family();
-		int[] status = {0, 0, 0};
+		rodzina = new Family();
+		int[] status = { 0, 0, 0 };
 		rodzina.setFamilyStatus(status);
 		assertArrayEquals(status, rodzina.getFamilyStatus());
-		
+
 	}
+
 }
