@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/naczilku")
 public class MainController {
 
+	@RequestMapping("/")
 	public String welcomePage() {
 		return "Szlachetna paczka";
 	}
