@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +20,16 @@ public class DonorController {
 
 	@Autowired
 	private DonorRepository donorRepository;
-	
-	@RequestMapping("/donor")
+
+	@GetMapping("/donor")
 	public List<Donor> retrieveDonors() {
 		return donorRepository.findAll();
 	}
-	
+
 	@PostMapping("/donor")
 	public Donor createDonor(@Valid @RequestBody Donor donor) {
 		return donorRepository.save(donor);
-		
+
 	}
-	
+
 }
