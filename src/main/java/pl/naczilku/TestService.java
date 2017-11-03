@@ -12,7 +12,7 @@ import pl.naczilku.model.Task;
 import pl.naczilku.model.Volunteer;
 
 @Service
-public class FamilyService {
+public class TestService {
 
 	private List<Family> familyList = new LinkedList<Family>();
 	private Random rnd = new Random();
@@ -35,19 +35,19 @@ public class FamilyService {
 		String[] imiona = { "Patryk", "Kacper", "Paweł", "Marcin", "Sebastian" };
 
 		List<Donor> donorList = new LinkedList<Donor>();
-		Donor tmpDonor = new Donor(1, imiona[rnd.nextInt(5)],
+		Donor tmpDonor = new Donor(1L, imiona[rnd.nextInt(5)],
 				nazwiska[rnd.nextInt(5)], true,
 				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor);
-		Donor tmpDonor2 = new Donor(1, imiona[rnd.nextInt(5)],
+		Donor tmpDonor2 = new Donor(1L, imiona[rnd.nextInt(5)],
 				nazwiska[rnd.nextInt(5)], false,
 				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor2);
-		Donor tmpDonor3 = new Donor(1, imiona[rnd.nextInt(5)],
+		Donor tmpDonor3 = new Donor(1L, imiona[rnd.nextInt(5)],
 				nazwiska[rnd.nextInt(5)], false,
 				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor3);
-		Donor tmpDonor4 = new Donor(1, imiona[rnd.nextInt(5)],
+		Donor tmpDonor4 = new Donor(1L, imiona[rnd.nextInt(5)],
 				nazwiska[rnd.nextInt(5)], false,
 				rnd.nextInt(28000000) + 60000000);
 		donorList.add(tmpDonor4);
@@ -64,7 +64,7 @@ public class FamilyService {
 		String description = "Super pozytywna rodzinka";
 		String woivoiship = "polska";
 		boolean isFinished = false;
-		Family family1 = new Family(id, lastName, numOfMembers, woivoiship,
+		Family family1 = new Family((long) id, lastName, numOfMembers, woivoiship,
 				region[rnd.nextInt(5)], street[rnd.nextInt(5)], volunteer,
 				donorList, familyStatus, isFinished, description, taskList);
 		family1.addTask(new Task("Jedzenie", "Maka", null, false, null, null));

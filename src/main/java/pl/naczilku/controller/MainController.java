@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.naczilku.FamilyService;
+import pl.naczilku.TestService;
 import pl.naczilku.model.Donor;
 import pl.naczilku.model.Family;
 import pl.naczilku.model.Task;
@@ -22,7 +22,7 @@ import pl.naczilku.repository.DonorRepository;
 public class MainController {
 
 	@Autowired
-	private FamilyService familyService;
+	private TestService familyService;
 	
 	@Autowired
 	private DonorRepository donorRepository;
