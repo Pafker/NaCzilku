@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.naczilku.TestService;
 import pl.naczilku.model.Family;
 import pl.naczilku.repository.FamilyRepository;
 
@@ -18,19 +17,11 @@ import pl.naczilku.repository.FamilyRepository;
 public class FamilyController {
 
 	@Autowired
-	private TestService testService;
-
-	@Autowired
 	private FamilyRepository familyRepository;
 
 	@GetMapping("/familylist")
 	public List<Family> showFamilyListTree() {
 		return familyRepository.findAll();
-	}
-
-	@GetMapping("/familylist/{id}")
-	public Family showFamily(@PathVariable int id) {
-		return testService.getFamily(id);
 	}
 
 	@GetMapping("/familylist/{id}")
